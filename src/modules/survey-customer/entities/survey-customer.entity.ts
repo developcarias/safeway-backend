@@ -9,7 +9,6 @@ import {
 import { Customer } from 'src/modules/customer/entities/customer.entity';
 import { Survey } from 'src/modules/survey/entities/survey.entity';
 
-@Index('survey_customer_pk', ['id'], { unique: true })
 @Entity('survey_customer', { schema: 'safeway_schema' })
 export class SurveyCustomer {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

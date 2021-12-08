@@ -7,7 +7,6 @@ import {
 } from 'typeorm';
 import { SurveyCustomer } from 'src/modules/survey-customer/entities/survey-customer.entity';
 
-@Index('survey_pk', ['id'], { unique: true })
 @Entity('survey', { schema: 'safeway_schema' })
 export class Survey {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

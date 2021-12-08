@@ -8,7 +8,6 @@ import {
 import { Role } from 'src/modules/role/entities/role.entity';
 import { User } from 'src/modules/user/entities/user.entity';
 
-@Index('user_role_pk', ['id'], { unique: true })
 @Entity('user_role', { schema: 'safeway_schema' })
 export class UserRole {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

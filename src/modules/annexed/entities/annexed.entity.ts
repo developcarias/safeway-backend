@@ -7,7 +7,6 @@ import {
 } from 'typeorm';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 
-@Index('annexed_pk', ['id'], { unique: true })
 @Entity('annexed', { schema: 'safeway_schema' })
 export class Annexed {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

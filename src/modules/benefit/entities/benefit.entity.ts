@@ -7,7 +7,6 @@ import {
 } from 'typeorm';
 import { BenefitMembership } from 'src/modules/benefit-membership/entities/benefit-membership.entity';
 
-@Index('benefit_pk', ['id'], { unique: true })
 @Entity('benefit', { schema: 'safeway_schema' })
 export class Benefit {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

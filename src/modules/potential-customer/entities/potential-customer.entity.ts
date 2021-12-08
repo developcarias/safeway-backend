@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
 
-@Index('potential_customer_pk', ['id'], { unique: true })
 @Entity('potential_customer', { schema: 'safeway_schema' })
 export class PotentialCustomer {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

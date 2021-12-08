@@ -1,13 +1,6 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { CustomerBeneficiary } from 'src/modules/customer-beneficiary/entities/customer-beneficiary.entity';
 
-@Index('beneficiary_pk', ['id'], { unique: true })
 @Entity('beneficiary', { schema: 'safeway_schema' })
 export class Beneficiary {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

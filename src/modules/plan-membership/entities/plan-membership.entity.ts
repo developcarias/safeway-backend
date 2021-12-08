@@ -12,8 +12,6 @@ import { Plan } from 'src/modules/plan/entities/plan.entity';
 import { PotentialCustomer } from 'src/modules/potential-customer/entities/potential-customer.entity';
 import { Customer } from 'src/modules/customer/entities/customer.entity';
 
-@Index('plan_membership_pk', ['id'], { unique: true })
-@Index('plan_membership_un', ['membershipId', 'planId'], { unique: true })
 @Entity('plan_membership', { schema: 'safeway_schema' })
 export class PlanMembership {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

@@ -8,9 +8,6 @@ import {
 import { UserCustomer } from 'src/modules/user-customer/entities/user-customer.entity';
 import { UserRole } from 'src/modules/user-role/entities/user-role.entity';
 
-@Index('user_un', ['email'], { unique: true })
-@Index('user_pkey', ['id'], { unique: true })
-@Index('user_usname', ['userName'], { unique: true })
 @Entity('user', { schema: 'safeway_schema' })
 export class User {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

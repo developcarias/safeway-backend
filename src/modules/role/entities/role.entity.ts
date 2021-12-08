@@ -7,7 +7,6 @@ import {
 } from 'typeorm';
 import { UserRole } from 'src/modules/user-role/entities/user-role.entity';
 
-@Index('role_pk', ['id'], { unique: true })
 @Entity('role', { schema: 'safeway_schema' })
 export class Role {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

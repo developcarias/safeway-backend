@@ -9,8 +9,6 @@ import {
 import { Benefit } from 'src/modules/benefit/entities/benefit.entity';
 import { Membereship } from 'src/modules/membership/entities/membership.entity';
 
-@Index('benefit_membership_un', ['benefitId', 'membershipId'], { unique: true })
-@Index('benefit_membership_pk', ['id'], { unique: true })
 @Entity('benefit_membership', { schema: 'safeway_schema' })
 export class BenefitMembership {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

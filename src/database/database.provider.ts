@@ -8,8 +8,7 @@ export const DatabaseProvider = [
     username: 'safeway',
     password: '3131tes..',
     port: 5432,
-    synchronize: true,
+    synchronize: false,
     entities: [__dirname + '../../modules/**/*.entity{.ts,.js}'],
-    migrations: [__dirname + '../migrations/*{.ts,.js}'],
   }),
 ];

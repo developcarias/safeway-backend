@@ -8,7 +8,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Index('customer_beneficiary_pk', ['id'], { unique: true })
 @Entity('customer_beneficiary', { schema: 'safeway_schema' })
 export class CustomerBeneficiary {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

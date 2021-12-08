@@ -1,13 +1,6 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
 
-@Index('id_pk', ['id'], { unique: true })
 @Entity('plan', { schema: 'safeway_schema' })
 export class Plan {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

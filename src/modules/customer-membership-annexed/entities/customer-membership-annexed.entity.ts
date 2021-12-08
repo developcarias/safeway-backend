@@ -8,7 +8,6 @@ import {
 import { Customer } from 'src/modules/customer/entities/customer.entity';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 
-@Index('customer_membership_annexed_pk', ['id'], { unique: true })
 @Entity('customer_membership_annexed', { schema: 'safeway_schema' })
 export class CustomerMembershipAnnexed {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

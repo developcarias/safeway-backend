@@ -11,8 +11,6 @@ import { Annexed } from 'src/modules/annexed/entities/annexed.entity';
 import { Membereship } from 'src/modules/membership/entities/membership.entity';
 import { CustomerMembershipAnnexed } from 'src/modules/customer-membership-annexed/entities/customer-membership-annexed.entity';
 
-@Index('membership_annexed_un', ['annexedId', 'membershipId'], { unique: true })
-@Index('membership_annexed_pk', ['id'], { unique: true })
 @Entity('membership_annexed', { schema: 'safeway_schema' })
 export class MembershipAnnexed {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

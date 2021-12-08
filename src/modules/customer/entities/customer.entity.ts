@@ -13,7 +13,6 @@ import { PlanMembership } from 'src/modules/plan-membership/entities/plan-member
 import { SurveyCustomer } from 'src/modules/survey-customer/entities/survey-customer.entity';
 import { UserCustomer } from 'src/modules/user-customer/entities/user-customer.entity';
 
-@Index('customer_pk', ['id'], { unique: true })
 @Entity('customer', { schema: 'safeway_schema' })
 export class Customer {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

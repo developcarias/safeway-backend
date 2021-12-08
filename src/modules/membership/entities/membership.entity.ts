@@ -9,7 +9,6 @@ import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membe
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
 import { BenefitMembership } from 'src/modules/benefit-membership/entities/benefit-membership.entity';
 
-@Index('membereship_pk', ['id'], { unique: true })
 @Entity('membereship', { schema: 'safeway_schema' })
 export class Membereship {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

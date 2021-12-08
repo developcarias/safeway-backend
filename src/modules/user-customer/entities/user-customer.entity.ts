@@ -10,7 +10,6 @@ import { Customer } from 'src/modules/customer/entities/customer.entity';
 import { User } from 'src/modules/user/entities/user.entity';
 import { Quote } from 'src/modules/quote/entities/quote.entity';
 
-@Index('user_customer_pk', ['id'], { unique: true })
 @Entity('user_customer', { schema: 'safeway_schema' })
 export class UserCustomer {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
