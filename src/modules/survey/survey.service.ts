@@ -16,7 +16,9 @@ export class SurveyService {
   }
 
   async findAll() {
-    return this._surveyRepository.find();
+    return (await this._surveyRepository.find()).sort(
+      (a, b) => a.item - b.item,
+    );
   }
 
   findOne(id: number) {

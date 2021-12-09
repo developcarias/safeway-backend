@@ -50,9 +50,7 @@ export class PlanService {
                         description: benefitMembership.benefit.description,
                       };
                     })
-                    .sort((a, b) => {
-                      return a.item - b.item;
-                    }),
+                    .sort((a, b) => a.item - b.item),
                   annexes: planMembership.membership.membershipAnnexeds
                     .map((membershipAnnexed) => {
                       return {
@@ -63,16 +61,12 @@ export class PlanService {
                         priceUSD: membershipAnnexed.priceUsd,
                       };
                     })
-                    .sort((a, b) => {
-                      return a.item - b.item;
-                    }),
+                    .sort((a, b) => a.item - b.item),
                 };
               }),
             };
           })
-          .sort((a, b) => {
-            return a.item - b.item;
-          });
+          .sort((a, b) => a.item - b.item);
       })
       .catch((error) => {
         console.log(error);

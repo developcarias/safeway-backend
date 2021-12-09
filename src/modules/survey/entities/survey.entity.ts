@@ -18,6 +18,9 @@ export class Survey {
   @Column('integer', { name: 'is_boolean' })
   isBoolean: number;
 
+  @Column('integer', { name: 'item' })
+  item: number;
+
   @OneToMany(() => SurveyCustomer, (surveyCustomer) => surveyCustomer.survey)
   surveyCustomers: SurveyCustomer[];
 }
