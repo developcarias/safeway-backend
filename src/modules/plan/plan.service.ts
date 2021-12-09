@@ -41,6 +41,8 @@ export class PlanService {
                   item: planMembership.membership.item,
                   name: planMembership.membership.name,
                   priceUSD: planMembership.priceUsd,
+                  colorRgb: planMembership.membership.colorRgb,
+                  idGradient: planMembership.membership.isGradient,
                   benefits: planMembership.membership.benefitMemberships
                     .map((benefitMembership) => {
                       return {

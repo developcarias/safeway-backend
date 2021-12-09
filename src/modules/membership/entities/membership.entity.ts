@@ -29,6 +29,12 @@ export class Membership {
   @Column('integer', { name: 'item' })
   item: number;
 
+  @Column('text', { name: 'colorRGB' })
+  colorRgb: string;
+
+  @Column('integer', { name: 'is_gradient' })
+  isGradient: number;
+
   @OneToMany(
     () => BenefitMembership,
     (benefitMembership) => benefitMembership.membership,
