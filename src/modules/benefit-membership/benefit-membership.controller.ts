@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BenefitMembershipService } from './benefit-membership.service';
 import { CreateBenefitMembershipDto } from './dto/create-benefit-membership.dto';
 import { UpdateBenefitMembershipDto } from './dto/update-benefit-membership.dto';
 
 @Controller('benefit-membership')
 export class BenefitMembershipController {
-  constructor(private readonly benefitMembershipService: BenefitMembershipService) {}
+  constructor(
+    private readonly benefitMembershipService: BenefitMembershipService,
+  ) {}
 
   @Post()
   create(@Body() createBenefitMembershipDto: CreateBenefitMembershipDto) {
@@ -23,8 +33,14 @@ export class BenefitMembershipController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBenefitMembershipDto: UpdateBenefitMembershipDto) {
-    return this.benefitMembershipService.update(+id, updateBenefitMembershipDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateBenefitMembershipDto: UpdateBenefitMembershipDto,
+  ) {
+    return this.benefitMembershipService.update(
+      +id,
+      updateBenefitMembershipDto,
+    );
   }
 
   @Delete(':id')

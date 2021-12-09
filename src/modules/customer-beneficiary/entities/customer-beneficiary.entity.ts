@@ -1,12 +1,6 @@
 import { Beneficiary } from 'src/modules/beneficiary/entities/beneficiary.entity';
 import { Customer } from 'src/modules/customer/entities/customer.entity';
-import {
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('customer_beneficiary', { schema: 'safeway_schema' })
 export class CustomerBeneficiary {

@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { SurveyCustomer } from 'src/modules/survey-customer/entities/survey-customer.entity';
 
 @Entity('survey', { schema: 'safeway_schema' })

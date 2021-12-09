@@ -1,16 +1,10 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
 import { BenefitMembership } from 'src/modules/benefit-membership/entities/benefit-membership.entity';
 
-@Entity('membereship', { schema: 'safeway_schema' })
-export class Membereship {
+@Entity('membership', { schema: 'safeway_schema' })
+export class Membership {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 

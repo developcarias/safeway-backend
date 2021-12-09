@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BenefitMembership } from 'src/modules/benefit-membership/entities/benefit-membership.entity';
 
 @Entity('benefit', { schema: 'safeway_schema' })

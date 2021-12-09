@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { BenefitMembershipRepository } from './benefit-membership.repository';
 import { CreateBenefitMembershipDto } from './dto/create-benefit-membership.dto';
 import { UpdateBenefitMembershipDto } from './dto/update-benefit-membership.dto';
 
 @Injectable()
 export class BenefitMembershipService {
+  constructor(
+    @InjectRepository(BenefitMembershipRepository)
+    private readonly _benefitMembershipRepository: BenefitMembershipRepository,
+  ) {}
+
   create(createBenefitMembershipDto: CreateBenefitMembershipDto) {
     return 'This action adds a new benefitMembership';
   }

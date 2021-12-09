@@ -1,15 +1,30 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CustomerMembershipAnnexedService } from './customer-membership-annexed.service';
 import { CreateCustomerMembershipAnnexedDto } from './dto/create-customer-membership-annexed.dto';
 import { UpdateCustomerMembershipAnnexedDto } from './dto/update-customer-membership-annexed.dto';
 
 @Controller('customer-membership-annexed')
 export class CustomerMembershipAnnexedController {
-  constructor(private readonly customerMembershipAnnexedService: CustomerMembershipAnnexedService) {}
+  constructor(
+    private readonly customerMembershipAnnexedService: CustomerMembershipAnnexedService,
+  ) {}
 
   @Post()
-  create(@Body() createCustomerMembershipAnnexedDto: CreateCustomerMembershipAnnexedDto) {
-    return this.customerMembershipAnnexedService.create(createCustomerMembershipAnnexedDto);
+  create(
+    @Body()
+    createCustomerMembershipAnnexedDto: CreateCustomerMembershipAnnexedDto,
+  ) {
+    return this.customerMembershipAnnexedService.create(
+      createCustomerMembershipAnnexedDto,
+    );
   }
 
   @Get()
@@ -23,8 +38,15 @@ export class CustomerMembershipAnnexedController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCustomerMembershipAnnexedDto: UpdateCustomerMembershipAnnexedDto) {
-    return this.customerMembershipAnnexedService.update(+id, updateCustomerMembershipAnnexedDto);
+  update(
+    @Param('id') id: string,
+    @Body()
+    updateCustomerMembershipAnnexedDto: UpdateCustomerMembershipAnnexedDto,
+  ) {
+    return this.customerMembershipAnnexedService.update(
+      +id,
+      updateCustomerMembershipAnnexedDto,
+    );
   }
 
   @Delete(':id')

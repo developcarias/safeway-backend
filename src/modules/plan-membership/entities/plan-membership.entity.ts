@@ -1,13 +1,12 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Membereship } from 'src/modules/membership/entities/membership.entity';
+import { Membership } from 'src/modules/membership/entities/membership.entity';
 import { Plan } from 'src/modules/plan/entities/plan.entity';
 import { PotentialCustomer } from 'src/modules/potential-customer/entities/potential-customer.entity';
 import { Customer } from 'src/modules/customer/entities/customer.entity';
@@ -29,9 +28,9 @@ export class PlanMembership {
   @OneToMany(() => Customer, (customer) => customer.planMembership)
   customers: Customer[];
 
-  @ManyToOne(() => Membereship, (membereship) => membereship.planMemberships)
+  @ManyToOne(() => Membership, (membership) => membership.planMemberships)
   @JoinColumn([{ name: 'membership_id', referencedColumnName: 'id' }])
-  membership: Membereship;
+  membership: Membership;
 
   @ManyToOne(() => Plan, (plan) => plan.planMemberships)
   @JoinColumn([{ name: 'plan_id', referencedColumnName: 'id' }])

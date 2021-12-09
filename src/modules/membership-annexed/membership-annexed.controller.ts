@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { MembershipAnnexedService } from './membership-annexed.service';
 import { CreateMembershipAnnexedDto } from './dto/create-membership-annexed.dto';
 import { UpdateMembershipAnnexedDto } from './dto/update-membership-annexed.dto';
 
 @Controller('membership-annexed')
 export class MembershipAnnexedController {
-  constructor(private readonly membershipAnnexedService: MembershipAnnexedService) {}
+  constructor(
+    private readonly membershipAnnexedService: MembershipAnnexedService,
+  ) {}
 
   @Post()
   create(@Body() createMembershipAnnexedDto: CreateMembershipAnnexedDto) {
@@ -23,8 +33,14 @@ export class MembershipAnnexedController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMembershipAnnexedDto: UpdateMembershipAnnexedDto) {
-    return this.membershipAnnexedService.update(+id, updateMembershipAnnexedDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateMembershipAnnexedDto: UpdateMembershipAnnexedDto,
+  ) {
+    return this.membershipAnnexedService.update(
+      +id,
+      updateMembershipAnnexedDto,
+    );
   }
 
   @Delete(':id')

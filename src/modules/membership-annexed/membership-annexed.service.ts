@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateMembershipAnnexedDto } from './dto/create-membership-annexed.dto';
 import { UpdateMembershipAnnexedDto } from './dto/update-membership-annexed.dto';
+import { MembershipAnnexedRepository } from './membership-annexed.repository';
 
 @Injectable()
 export class MembershipAnnexedService {
+  constructor(
+    @InjectRepository(MembershipAnnexedRepository)
+    private readonly _membershipAnnexedRepositoryRepository: MembershipAnnexedRepository,
+  ) {}
+
   create(createMembershipAnnexedDto: CreateMembershipAnnexedDto) {
     return 'This action adds a new membershipAnnexed';
   }

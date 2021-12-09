@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreatePotentialCustomerDto } from './dto/create-potential-customer.dto';
 import { UpdatePotentialCustomerDto } from './dto/update-potential-customer.dto';
+import { PotentialCustomerRepository } from './potential-customer.repository';
 
 @Injectable()
 export class PotentialCustomerService {
+  constructor(
+    @InjectRepository(PotentialCustomerRepository)
+    private readonly _potentialCustomerRepository: PotentialCustomerRepository,
+  ) {}
+
   create(createPotentialCustomerDto: CreatePotentialCustomerDto) {
     return 'This action adds a new potentialCustomer';
   }

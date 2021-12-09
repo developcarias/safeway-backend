@@ -11,7 +11,9 @@ describe('CustomerMembershipAnnexedController', () => {
       providers: [CustomerMembershipAnnexedService],
     }).compile();
 
-    controller = module.get<CustomerMembershipAnnexedController>(CustomerMembershipAnnexedController);
+    controller = module.get<CustomerMembershipAnnexedController>(
+      CustomerMembershipAnnexedController,
+    );
   });
 
   it('should be defined', () => {

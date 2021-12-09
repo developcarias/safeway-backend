@@ -1,10 +1,4 @@
-import {
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Customer } from 'src/modules/customer/entities/customer.entity';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 

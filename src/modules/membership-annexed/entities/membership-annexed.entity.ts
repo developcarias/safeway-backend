@@ -1,14 +1,13 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Annexed } from 'src/modules/annexed/entities/annexed.entity';
-import { Membereship } from 'src/modules/membership/entities/membership.entity';
+import { Membership } from 'src/modules/membership/entities/membership.entity';
 import { CustomerMembershipAnnexed } from 'src/modules/customer-membership-annexed/entities/customer-membership-annexed.entity';
 
 @Entity('membership_annexed', { schema: 'safeway_schema' })
@@ -35,7 +34,7 @@ export class MembershipAnnexed {
   @JoinColumn([{ name: 'annexed_id', referencedColumnName: 'id' }])
   annexed: Annexed;
 
-  @ManyToOne(() => Membereship, (membereship) => membereship.membershipAnnexeds)
+  @ManyToOne(() => Membership, (membership) => membership.membershipAnnexeds)
   @JoinColumn([{ name: 'membership_id', referencedColumnName: 'id' }])
-  membership: Membereship;
+  membership: Membership;
 }

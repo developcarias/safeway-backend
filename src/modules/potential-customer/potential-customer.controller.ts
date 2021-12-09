@@ -1,11 +1,21 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PotentialCustomerService } from './potential-customer.service';
 import { CreatePotentialCustomerDto } from './dto/create-potential-customer.dto';
 import { UpdatePotentialCustomerDto } from './dto/update-potential-customer.dto';
 
 @Controller('potential-customer')
 export class PotentialCustomerController {
-  constructor(private readonly potentialCustomerService: PotentialCustomerService) {}
+  constructor(
+    private readonly potentialCustomerService: PotentialCustomerService,
+  ) {}
 
   @Post()
   create(@Body() createPotentialCustomerDto: CreatePotentialCustomerDto) {
@@ -23,8 +33,14 @@ export class PotentialCustomerController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePotentialCustomerDto: UpdatePotentialCustomerDto) {
-    return this.potentialCustomerService.update(+id, updatePotentialCustomerDto);
+  update(
+    @Param('id') id: string,
+    @Body() updatePotentialCustomerDto: UpdatePotentialCustomerDto,
+  ) {
+    return this.potentialCustomerService.update(
+      +id,
+      updatePotentialCustomerDto,
+    );
   }
 
   @Delete(':id')

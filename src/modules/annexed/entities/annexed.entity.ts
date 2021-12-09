@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 
 @Entity('annexed', { schema: 'safeway_schema' })

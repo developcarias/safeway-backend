@@ -1,13 +1,12 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Benefit } from 'src/modules/benefit/entities/benefit.entity';
-import { Membereship } from 'src/modules/membership/entities/membership.entity';
+import { Membership } from 'src/modules/membership/entities/membership.entity';
 
 @Entity('benefit_membership', { schema: 'safeway_schema' })
 export class BenefitMembership {
@@ -24,7 +23,7 @@ export class BenefitMembership {
   @JoinColumn([{ name: 'benefit_id', referencedColumnName: 'id' }])
   benefit: Benefit;
 
-  @ManyToOne(() => Membereship, (membereship) => membereship.benefitMemberships)
+  @ManyToOne(() => Membership, (membership) => membership.benefitMemberships)
   @JoinColumn([{ name: 'membership_id', referencedColumnName: 'id' }])
-  membership: Membereship;
+  membership: Membership;
 }

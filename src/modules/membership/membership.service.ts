@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateMembershipDto } from './dto/create-membership.dto';
 import { UpdateMembershipDto } from './dto/update-membership.dto';
+import { MembershipRepository } from './membership.repository';
 
 @Injectable()
 export class MembershipService {
+  constructor(
+    @InjectRepository(MembershipRepository)
+    private readonly _membershipRepository: MembershipRepository,
+  ) {}
+
   create(createMembershipDto: CreateMembershipDto) {
     return 'This action adds a new membership';
   }

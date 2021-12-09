@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { UserRole } from 'src/modules/user-role/entities/user-role.entity';
 
 @Entity('role', { schema: 'safeway_schema' })

@@ -1,10 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CustomerMembershipAnnexedRepository } from './customer-membership-annexed.repository';
 import { CreateCustomerMembershipAnnexedDto } from './dto/create-customer-membership-annexed.dto';
 import { UpdateCustomerMembershipAnnexedDto } from './dto/update-customer-membership-annexed.dto';
 
 @Injectable()
 export class CustomerMembershipAnnexedService {
-  create(createCustomerMembershipAnnexedDto: CreateCustomerMembershipAnnexedDto) {
+  constructor(
+    @InjectRepository(CustomerMembershipAnnexedRepository)
+    private readonly _customerMembershipAnnexedRepository: CustomerMembershipAnnexedRepository,
+  ) {}
+
+  create(
+    createCustomerMembershipAnnexedDto: CreateCustomerMembershipAnnexedDto,
+  ) {
     return 'This action adds a new customerMembershipAnnexed';
   }
 
@@ -16,7 +25,10 @@ export class CustomerMembershipAnnexedService {
     return `This action returns a #${id} customerMembershipAnnexed`;
   }
 
-  update(id: number, updateCustomerMembershipAnnexedDto: UpdateCustomerMembershipAnnexedDto) {
+  update(
+    id: number,
+    updateCustomerMembershipAnnexedDto: UpdateCustomerMembershipAnnexedDto,
+  ) {
     return `This action updates a #${id} customerMembershipAnnexed`;
   }
 

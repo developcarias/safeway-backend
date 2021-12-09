@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { BeneficiaryRepository } from './beneficiary.repository';
 import { CreateBeneficiaryDto } from './dto/create-beneficiary.dto';
 import { UpdateBeneficiaryDto } from './dto/update-beneficiary.dto';
 
 @Injectable()
 export class BeneficiaryService {
+  constructor(
+    @InjectRepository(BeneficiaryRepository)
+    private readonly _beneficiaryRepository: BeneficiaryRepository,
+  ) {}
+
   create(createBeneficiaryDto: CreateBeneficiaryDto) {
     return 'This action adds a new beneficiary';
   }

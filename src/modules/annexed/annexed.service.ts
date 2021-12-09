@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { AnnexedRepository } from './annexed.repository';
 import { CreateAnnexedDto } from './dto/create-annexed.dto';
 import { UpdateAnnexedDto } from './dto/update-annexed.dto';
 
 @Injectable()
 export class AnnexedService {
+  constructor(
+    @InjectRepository(AnnexedRepository)
+    private readonly _annexedRepository: AnnexedRepository,
+  ) {}
+
   create(createAnnexedDto: CreateAnnexedDto) {
     return 'This action adds a new annexed';
   }
