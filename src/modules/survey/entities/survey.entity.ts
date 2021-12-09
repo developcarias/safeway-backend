@@ -15,6 +15,9 @@ export class Survey {
   @Column('character varying', { name: 'active', default: () => '1' })
   active: string;
 
+  @Column('integer', { name: 'is_boolean' })
+  isBoolean: number;
+
   @OneToMany(() => SurveyCustomer, (surveyCustomer) => surveyCustomer.survey)
   surveyCustomers: SurveyCustomer[];
 }

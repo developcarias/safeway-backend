@@ -15,8 +15,8 @@ export class SurveyService {
     return 'This action adds a new survey';
   }
 
-  findAll() {
-    return `This action returns all survey`;
+  async findAll() {
+    return this._surveyRepository.find();
   }
 
   findOne(id: number) {
