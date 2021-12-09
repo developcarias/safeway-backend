@@ -15,8 +15,8 @@ export class PlanMembershipService {
     return 'This action adds a new planMembership';
   }
 
-  findAll() {
-    return `This action returns all planMembership`;
+  async findAll() {
+    return await this._planMembershipRepository.find();
   }
 
   findOne(id: number) {

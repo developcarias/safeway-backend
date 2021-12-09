@@ -15,6 +15,9 @@ export class Benefit {
   @Column('integer', { name: 'active', default: () => '1' })
   active: number;
 
+  @Column('integer', { name: 'item' })
+  item: number;
+
   @OneToMany(
     () => BenefitMembership,
     (benefitMembership) => benefitMembership.benefit,

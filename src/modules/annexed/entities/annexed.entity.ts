@@ -21,6 +21,9 @@ export class Annexed {
   @Column('integer', { name: 'active', default: () => '1' })
   active: number;
 
+  @Column('integer', { name: 'item' })
+  item: number;
+
   @OneToMany(
     () => MembershipAnnexed,
     (membershipAnnexed) => membershipAnnexed.annexed,

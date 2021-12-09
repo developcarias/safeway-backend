@@ -26,6 +26,9 @@ export class Membership {
   @Column('date', { name: 'updated', default: () => 'CURRENT_DATE' })
   updated: string;
 
+  @Column('integer', { name: 'item' })
+  item: number;
+
   @OneToMany(
     () => BenefitMembership,
     (benefitMembership) => benefitMembership.membership,

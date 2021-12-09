@@ -24,8 +24,8 @@ export class Plan {
   @Column('date', { name: 'updated', default: () => 'CURRENT_DATE' })
   updated: string;
 
-  @Column('text', { name: 'test', nullable: true })
-  test: string | null;
+  @Column('integer', { name: 'item' })
+  item: number;
 
   @OneToMany(() => PlanMembership, (planMembership) => planMembership.plan)
   planMemberships: PlanMembership[];
