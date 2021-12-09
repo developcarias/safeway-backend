@@ -11,7 +11,7 @@ async function bootstrap() {
     .setDescription('Method for API REST')
     .setVersion('1.0')
     .build();
-  const globalPrefix = 'safeway';
+  const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
 
   const document = SwaggerModule.createDocument(app, options);
