@@ -15,7 +15,6 @@ import { MembershipAnnexedModule } from './modules/membership-annexed/membership
 import { CustomerMembershipAnnexedModule } from './modules/customer-membership-annexed/customer-membership-annexed.module';
 import { CustomerModule } from './modules/customer/customer.module';
 import { BeneficiaryModule } from './modules/beneficiary/beneficiary.module';
-import { CustomerBeneficiaryModule } from './modules/customer-beneficiary/customer-beneficiary.module';
 import { SurveyModule } from './modules/survey/survey.module';
 import { SurveyCustomerModule } from './modules/survey-customer/survey-customer.module';
 import { UserModule } from './modules/user/user.module';
@@ -25,6 +24,7 @@ import { RoleModule } from './modules/role/role.module';
 import { UserRoleModule } from './modules/user-role/user-role.module';
 import { QuoteModule } from './modules/quote/quote.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { InvoiceModule } from './modules/invoice/invoice.module';
 
 @Module({
   imports: [
@@ -44,7 +44,6 @@ import { AuthModule } from './modules/auth/auth.module';
     CustomerMembershipAnnexedModule,
     CustomerModule,
     BeneficiaryModule,
-    CustomerBeneficiaryModule,
     SurveyModule,
     SurveyCustomerModule,
     UserModule,
@@ -54,6 +53,7 @@ import { AuthModule } from './modules/auth/auth.module';
     UserRoleModule,
     QuoteModule,
     AuthModule,
+    InvoiceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

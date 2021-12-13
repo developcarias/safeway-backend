@@ -6,11 +6,11 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { CustomerBeneficiary } from 'src/modules/customer-beneficiary/entities/customer-beneficiary.entity';
 import { CustomerMembershipAnnexed } from 'src/modules/customer-membership-annexed/entities/customer-membership-annexed.entity';
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
 import { SurveyCustomer } from 'src/modules/survey-customer/entities/survey-customer.entity';
 import { UserCustomer } from 'src/modules/user-customer/entities/user-customer.entity';
+import { Invoice } from 'src/modules/invoice/entities/invoice.entity';
 
 @Entity('customer', { schema: 'safeway_schema' })
 export class Customer {
@@ -32,8 +32,8 @@ export class Customer {
   @Column('text', { name: 'email' })
   email: string;
 
-  @Column('text', { name: 'cellphne_contact' })
-  cellphneContact: string;
+  @Column('text', { name: 'cellphone_contact' })
+  cellphoneContact: string;
 
   @Column('text', { name: 'phone_contact' })
   phoneContact: string;
@@ -45,11 +45,8 @@ export class Customer {
   @JoinColumn([{ name: 'plan_membership_id', referencedColumnName: 'id' }])
   planMembership: PlanMembership;
 
-  @OneToMany(
-    () => CustomerBeneficiary,
-    (customerBeneficiary) => customerBeneficiary.customer,
-  )
-  customerBeneficiaries: CustomerBeneficiary[];
+  @OneToMany(() => Invoice, (invoice) => invoice.customer)
+  invoices: Invoice[];
 
   @OneToMany(
     () => CustomerMembershipAnnexed,

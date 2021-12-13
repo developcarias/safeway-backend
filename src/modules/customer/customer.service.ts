@@ -1,18 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PlanMembershipRepository } from '../plan-membership/plan-membership.repository';
 import { CustomerRepository } from './customer.repository';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
+import { Customer } from './entities/customer.entity';
 
 @Injectable()
 export class CustomerService {
   constructor(
     @InjectRepository(CustomerRepository)
     private readonly _customerRepository: CustomerRepository,
+    @InjectRepository(PlanMembershipRepository)
+    private readonly _planMembershipRepository: PlanMembershipRepository,
   ) {}
 
-  create(createCustomerDto: CreateCustomerDto) {
-    return 'This action adds a new customer';
+  async create(createCustomerDto: CreateCustomerDto): Promise<Customer> {
+    const customerEntity: Customer = new Customer();
+    customerEntity.planMembership =
+      await this._planMembershipRepository.findOne({
+        id: createCustomerDto.plan_membership_id,
+      });
+    customerEntity.typeIdentify = createCustomerDto.idetificaction_type;
+    (customerEntity.identify = createCustomerDto.idetification),
+      (customerEntity.firstName = createCustomerDto.first_name),
+      (customerEntity.lastName = createCustomerDto.last_name),
+      (customerEntity.email = createCustomerDto.email),
+      (customerEntity.cellphoneContact = createCustomerDto.cellphone);
+    customerEntity.phoneContact = createCustomerDto.conventional_phone;
+    customerEntity.termsAccepted = 1;
+    return this._customerRepository.save(customerEntity);
   }
 
   findAll() {

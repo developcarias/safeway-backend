@@ -37,6 +37,12 @@ export class User {
   @Column('text', { name: 'identifier' })
   identifier: string;
 
+  @Column('text', { name: 'identifier' })
+  identifier: string;
+
+  @Column('text', { name: 'type_identifier', nullable: true })
+  typeIdentifier: string | null;
+
   @OneToMany(() => UserCustomer, (userCustomer) => userCustomer.user)
   userCustomers: UserCustomer[];
 

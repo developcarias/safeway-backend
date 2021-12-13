@@ -1,5 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { CustomerBeneficiary } from 'src/modules/customer-beneficiary/entities/customer-beneficiary.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Customer } from 'src/modules/customer/entities/customer.entity';
 
 @Entity('beneficiary', { schema: 'safeway_schema' })
 export class Beneficiary {
@@ -33,9 +39,10 @@ export class Beneficiary {
   @Column('integer', { name: 'weight' })
   weight: number;
 
-  @OneToMany(
-    () => CustomerBeneficiary,
-    (customerBeneficiary) => customerBeneficiary.beneficiary,
-  )
-  customerBeneficiaries: CustomerBeneficiary[];
+  @ManyToOne(() => Customer)
+  @JoinColumn([{ name: 'customer_id', referencedColumnName: 'id' }])
+  customer: Customer;
+
+  @Column('integer', { name: 'age' })
+  age: number;
 }
