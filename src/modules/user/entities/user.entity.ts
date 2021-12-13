@@ -37,9 +37,6 @@ export class User {
   @Column('text', { name: 'identifier' })
   identifier: string;
 
-  @Column('text', { name: 'identifier' })
-  identifier: string;
-
   @Column('text', { name: 'type_identifier', nullable: true })
   typeIdentifier: string | null;
 
