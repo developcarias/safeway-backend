@@ -34,6 +34,12 @@ export class User {
   @Column('integer', { name: 'active', default: () => '1' })
   active: number;
 
+  @Column('text', { name: 'identifier' })
+  identifier: string;
+
+  @Column('text', { name: 'type_identifier', nullable: true })
+  typeIdentifier: string | null;
+
   @OneToMany(() => UserCustomer, (userCustomer) => userCustomer.user)
   userCustomers: UserCustomer[];
 
