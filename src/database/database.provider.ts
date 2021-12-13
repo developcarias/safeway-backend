@@ -7,7 +7,7 @@ export const DatabaseProvider = [
     host: 'localhost',
     username: 'safeway',
     password: '3131tes..',
-    port: 5432,
+    port: 5522,
     synchronize: false,
     entities: [__dirname + '../../modules/**/*.entity{.ts,.js}'],
   }),

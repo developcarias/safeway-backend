@@ -24,6 +24,7 @@ import { PotentialCustomerModule } from './modules/potential-customer/potential-
 import { RoleModule } from './modules/role/role.module';
 import { UserRoleModule } from './modules/user-role/user-role.module';
 import { QuoteModule } from './modules/quote/quote.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { QuoteModule } from './modules/quote/quote.module';
     RoleModule,
     UserRoleModule,
     QuoteModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
