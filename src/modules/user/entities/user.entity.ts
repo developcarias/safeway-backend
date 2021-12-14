@@ -29,10 +29,10 @@ export class User {
   password: string;
 
   @Column('integer', { name: 'aprove_to_access' })
-  aproveToAccess: number;
+  aproveToAccess = 1;
 
   @Column('integer', { name: 'active', default: () => '1' })
-  active: number;
+  active = 1;
 
   @Column('text', { name: 'identifier' })
   identifier: string;

@@ -23,6 +23,7 @@ import { PotentialCustomerModule } from './modules/potential-customer/potential-
 import { RoleModule } from './modules/role/role.module';
 import { UserRoleModule } from './modules/user-role/user-role.module';
 import { QuoteModule } from './modules/quote/quote.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { InvoiceModule } from './modules/invoice/invoice.module';
 import { PotentialCustomerMembershipAnnexedModule } from './modules/potential-customer-membership-annexed/potential-customer-membership-annexed.module';
 
@@ -52,6 +53,7 @@ import { PotentialCustomerMembershipAnnexedModule } from './modules/potential-cu
     RoleModule,
     UserRoleModule,
     QuoteModule,
+    AuthModule,
     InvoiceModule,
     PotentialCustomerMembershipAnnexedModule,
   ],
