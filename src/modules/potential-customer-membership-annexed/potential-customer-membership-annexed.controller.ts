@@ -1,15 +1,30 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PotentialCustomerMembershipAnnexedService } from './potential-customer-membership-annexed.service';
 import { CreatePotentialCustomerMembershipAnnexedDto } from './dto/create-potential-customer-membership-annexed.dto';
 import { UpdatePotentialCustomerMembershipAnnexedDto } from './dto/update-potential-customer-membership-annexed.dto';
 
 @Controller('potential-customer-membership-annexed')
 export class PotentialCustomerMembershipAnnexedController {
-  constructor(private readonly potentialCustomerMembershipAnnexedService: PotentialCustomerMembershipAnnexedService) {}
+  constructor(
+    private readonly potentialCustomerMembershipAnnexedService: PotentialCustomerMembershipAnnexedService,
+  ) {}
 
   @Post()
-  create(@Body() createPotentialCustomerMembershipAnnexedDto: CreatePotentialCustomerMembershipAnnexedDto) {
-    return this.potentialCustomerMembershipAnnexedService.create(createPotentialCustomerMembershipAnnexedDto);
+  create(
+    @Body()
+    createPotentialCustomerMembershipAnnexedDto: CreatePotentialCustomerMembershipAnnexedDto,
+  ) {
+    return this.potentialCustomerMembershipAnnexedService.create(
+      createPotentialCustomerMembershipAnnexedDto,
+    );
   }
 
   @Get()
@@ -23,8 +38,15 @@ export class PotentialCustomerMembershipAnnexedController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePotentialCustomerMembershipAnnexedDto: UpdatePotentialCustomerMembershipAnnexedDto) {
-    return this.potentialCustomerMembershipAnnexedService.update(+id, updatePotentialCustomerMembershipAnnexedDto);
+  update(
+    @Param('id') id: string,
+    @Body()
+    updatePotentialCustomerMembershipAnnexedDto: UpdatePotentialCustomerMembershipAnnexedDto,
+  ) {
+    return this.potentialCustomerMembershipAnnexedService.update(
+      +id,
+      updatePotentialCustomerMembershipAnnexedDto,
+    );
   }
 
   @Delete(':id')

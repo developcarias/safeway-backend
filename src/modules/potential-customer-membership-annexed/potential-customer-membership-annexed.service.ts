@@ -1,12 +1,51 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CreateMembershipAnnexedDto } from '../membership-annexed/dto/create-membership-annexed.dto';
+import { MembershipAnnexedRepository } from '../membership-annexed/membership-annexed.repository';
+import { PotentialCustomer } from '../potential-customer/entities/potential-customer.entity';
 import { CreatePotentialCustomerMembershipAnnexedDto } from './dto/create-potential-customer-membership-annexed.dto';
 import { UpdatePotentialCustomerMembershipAnnexedDto } from './dto/update-potential-customer-membership-annexed.dto';
+import { PotentialCustomerMembershipAnnexed } from './entities/potential-customer-membership-annexed.entity';
+import { PotentialCustomerMembershipAnnexedRepository } from './potential-customer-membership-annexed.repository';
 
 @Injectable()
 export class PotentialCustomerMembershipAnnexedService {
+  constructor(
+    @InjectRepository(MembershipAnnexedRepository)
+    private readonly _membershipAnnexedRepository: MembershipAnnexedRepository,
+    @InjectRepository(PotentialCustomerMembershipAnnexedRepository)
+    private readonly _potentialCustomerMembershipAnnexedRepository: PotentialCustomerMembershipAnnexedRepository,
+  ) {}
+
   create(
     createPotentialCustomerMembershipAnnexedDto: CreatePotentialCustomerMembershipAnnexedDto,
   ) {
+    return 'This action adds a new potentialCustomerMembershipAnnexed';
+  }
+
+  createWithCustomerAndAnnexedMemberships(
+    potentialCustomer: PotentialCustomer,
+    membershipAnnexes: CreateMembershipAnnexedDto[],
+  ) {
+    let potentialCustomerMembershipAnnexeds: PotentialCustomerMembershipAnnexed[];
+    membershipAnnexes.forEach(
+      async (membershipAnnexed: CreateMembershipAnnexedDto) => {
+        const potentialCustomerMembershipAnnexed: PotentialCustomerMembershipAnnexed =
+          new PotentialCustomerMembershipAnnexed();
+        potentialCustomerMembershipAnnexed.potenntialCustomer =
+          potentialCustomer;
+        potentialCustomerMembershipAnnexed.membershipAnnexed =
+          await this._membershipAnnexedRepository.findOne({
+            id: membershipAnnexed.membership_annexed_id,
+          });
+        potentialCustomerMembershipAnnexeds.push(
+          potentialCustomerMembershipAnnexed,
+        );
+      },
+    );
+    this._potentialCustomerMembershipAnnexedRepository.save(
+      potentialCustomerMembershipAnnexeds,
+    );
     return 'This action adds a new potentialCustomerMembershipAnnexed';
   }
 

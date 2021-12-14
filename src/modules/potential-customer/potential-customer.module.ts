@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PlanMembershipRepository } from '../plan-membership/plan-membership.repository';
 import { MembershipAnnexedRepository } from '../membership-annexed/membership-annexed.repository';
 import { PotentialCustomerMembershipAnnexedRepository } from '../potential-customer-membership-annexed/potential-customer-membership-annexed.repository';
+import { PotentialCustomerMembershipAnnexedService } from '../potential-customer-membership-annexed/potential-customer-membership-annexed.service';
 
 @Module({
   imports: [
@@ -17,6 +18,9 @@ import { PotentialCustomerMembershipAnnexedRepository } from '../potential-custo
     ]),
   ],
   controllers: [PotentialCustomerController],
-  providers: [PotentialCustomerService],
+  providers: [
+    PotentialCustomerService,
+    PotentialCustomerMembershipAnnexedService,
+  ],
 })
 export class PotentialCustomerModule {}

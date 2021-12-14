@@ -5,6 +5,7 @@ import { MembershipAnnexedRepository } from '../membership-annexed/membership-an
 import { PlanMembershipRepository } from '../plan-membership/plan-membership.repository';
 import { PotentialCustomerMembershipAnnexed } from '../potential-customer-membership-annexed/entities/potential-customer-membership-annexed.entity';
 import { PotentialCustomerMembershipAnnexedRepository } from '../potential-customer-membership-annexed/potential-customer-membership-annexed.repository';
+import { PotentialCustomerMembershipAnnexedService } from '../potential-customer-membership-annexed/potential-customer-membership-annexed.service';
 import { CreatePotentialCustomerDto } from './dto/create-potential-customer.dto';
 import { UpdatePotentialCustomerDto } from './dto/update-potential-customer.dto';
 import { PotentialCustomer } from './entities/potential-customer.entity';
@@ -17,10 +18,7 @@ export class PotentialCustomerService {
     private readonly _potentialCustomerRepository: PotentialCustomerRepository,
     @InjectRepository(PlanMembershipRepository)
     private readonly _planMembershipRepository: PlanMembershipRepository,
-    @InjectRepository(MembershipAnnexedRepository)
-    private readonly _membershipAnnexedRepository: MembershipAnnexedRepository,
-    @InjectRepository(PotentialCustomerMembershipAnnexedRepository)
-    private readonly _potentialCustomerMembershipAnnexedRepository: PotentialCustomerMembershipAnnexedRepository,
+    private potentialCustomerMembershipAnnexeService: PotentialCustomerMembershipAnnexedService,
   ) {}
 
   async create(createPotentialCustomerDto: CreatePotentialCustomerDto) {
@@ -38,24 +36,9 @@ export class PotentialCustomerService {
     const portentialCustomerEntitySaved =
       await this._potentialCustomerRepository.save(portentialCustomerEntity);
 
-    let potentialCustomerMembershipAnnexeds: PotentialCustomerMembershipAnnexed[];
-    createPotentialCustomerDto.membership_annexed.forEach(
-      async (membershipAnnexed: CreateMembershipAnnexedDto) => {
-        const potentialCustomerMembershipAnnexed: PotentialCustomerMembershipAnnexed =
-          new PotentialCustomerMembershipAnnexed();
-        potentialCustomerMembershipAnnexed.potenntialCustomer =
-          portentialCustomerEntitySaved;
-        potentialCustomerMembershipAnnexed.membershipAnnexed =
-          await this._membershipAnnexedRepository.findOne({
-            id: membershipAnnexed.membership_annexed_id,
-          });
-        potentialCustomerMembershipAnnexeds.push(
-          potentialCustomerMembershipAnnexed,
-        );
-      },
-    );
-    this._potentialCustomerMembershipAnnexedRepository.save(
-      potentialCustomerMembershipAnnexeds,
+    this.potentialCustomerMembershipAnnexeService.createWithCustomerAndAnnexedMemberships(
+      portentialCustomerEntitySaved,
+      createPotentialCustomerDto.membership_annexed,
     );
 
     return portentialCustomerEntitySaved;
