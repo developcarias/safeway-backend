@@ -1,3 +1,1 @@
-export class CreateCustomerMembershipAnnexedDto {
-  membership_annexed_id: string;
-}
+export class CreateCustomerMembershipAnnexedDto {}

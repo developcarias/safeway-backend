@@ -3,12 +3,15 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { PlanMembership } from 'src/modules/plan-membership/entities/plan-membership.entity';
+import { PotentialCustomerMembershipAnnexed } from 'src/modules/potential-customer-membership-annexed/entities/potential-customer-membership-annexed.entity';
 
 @Entity('potential_customer', { schema: 'safeway_schema' })
 export class PotentialCustomer {
+  [x: string]: any;
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 
@@ -24,11 +27,11 @@ export class PotentialCustomer {
   @Column('text', { name: 'cellphone_contect', nullable: true })
   cellphoneContect: string | null;
 
-  @Column('text', { name: 'phone_contct' })
-  phoneContct: string;
+  @Column('text', { name: 'phone_contact' })
+  phoneContact: string;
 
   @Column('date', { name: 'created' })
-  created: string;
+  created: Date;
 
   @ManyToOne(
     () => PlanMembership,
@@ -36,4 +39,10 @@ export class PotentialCustomer {
   )
   @JoinColumn([{ name: 'plan_membership_id', referencedColumnName: 'id' }])
   planMembership: PlanMembership;
+
+  @OneToMany(
+    () => PotentialCustomerMembershipAnnexed,
+    (customerMembershipAnnexed) => customerMembershipAnnexed.potenntialCustomer,
+  )
+  portentialCustomerMembershipAnnexeds: PotentialCustomerMembershipAnnexed[];
 }

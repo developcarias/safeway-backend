@@ -24,6 +24,7 @@ import { RoleModule } from './modules/role/role.module';
 import { UserRoleModule } from './modules/user-role/user-role.module';
 import { QuoteModule } from './modules/quote/quote.module';
 import { InvoiceModule } from './modules/invoice/invoice.module';
+import { PotentialCustomerMembershipAnnexedModule } from './modules/potential-customer-membership-annexed/potential-customer-membership-annexed.module';
 
 @Module({
   imports: [
@@ -52,6 +53,7 @@ import { InvoiceModule } from './modules/invoice/invoice.module';
     UserRoleModule,
     QuoteModule,
     InvoiceModule,
+    PotentialCustomerMembershipAnnexedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

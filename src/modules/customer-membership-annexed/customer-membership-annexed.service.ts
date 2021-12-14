@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from '../customer/entities/customer.entity';
+import { CreateMembershipAnnexedDto } from '../membership-annexed/dto/create-membership-annexed.dto';
 import { MembershipAnnexedRepository } from '../membership-annexed/membership-annexed.repository';
 import { CustomerMembershipAnnexedRepository } from './customer-membership-annexed.repository';
 import { CreateCustomerMembershipAnnexedDto } from './dto/create-customer-membership-annexed.dto';
@@ -28,15 +29,13 @@ export class CustomerMembershipAnnexedService {
   ) {
     let customerMembershipAnnexeds: CustomerMembershipAnnexed[];
     createCustomerMembershipAnnexedDtos.forEach(
-      async (
-        customerMembershipAnnexedDto: CreateCustomerMembershipAnnexedDto,
-      ) => {
+      async (membershipAnnexedDto: CreateMembershipAnnexedDto) => {
         const customerMembershipAnnexed: CustomerMembershipAnnexed =
           new CustomerMembershipAnnexed();
         customerMembershipAnnexed.customer = customer;
         customerMembershipAnnexed.membershipAnnexed =
           await this._membershipAnnexedRepository.findOne({
-            id: customerMembershipAnnexedDto.membership_annexed_id,
+            id: membershipAnnexedDto.membership_annexed_id,
           });
         customerMembershipAnnexeds.push(customerMembershipAnnexed);
       },
