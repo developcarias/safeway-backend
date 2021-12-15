@@ -23,24 +23,22 @@ export class CustomerMembershipAnnexedService {
     return 'This action adds a new customerMembershipAnnexed';
   }
 
-  createWithCustomer(
-    createCustomerMembershipAnnexedDtos: CreateCustomerMembershipAnnexedDto[],
+  async createWithCustomer(
+    createMembershipAnnexedDtos: CreateMembershipAnnexedDto[],
     customer: Customer,
   ) {
-    let customerMembershipAnnexeds: CustomerMembershipAnnexed[];
-    createCustomerMembershipAnnexedDtos.forEach(
-      async (membershipAnnexedDto: CreateMembershipAnnexedDto) => {
-        const customerMembershipAnnexed: CustomerMembershipAnnexed =
-          new CustomerMembershipAnnexed();
-        customerMembershipAnnexed.customer = customer;
-        customerMembershipAnnexed.membershipAnnexed =
-          await this._membershipAnnexedRepository.findOne({
-            id: membershipAnnexedDto.membership_annexed_id,
-          });
-        customerMembershipAnnexeds.push(customerMembershipAnnexed);
-      },
-    );
-    return this._customerMembershipAnnexedRepository.save(
+    const customerMembershipAnnexeds: CustomerMembershipAnnexed[] = [];
+    for (const membershipAnnexedDto of createMembershipAnnexedDtos) {
+      const customerMembershipAnnexed: CustomerMembershipAnnexed =
+        new CustomerMembershipAnnexed();
+      customerMembershipAnnexed.customer = customer;
+      customerMembershipAnnexed.membershipAnnexed =
+        await this._membershipAnnexedRepository.findOne({
+          id: membershipAnnexedDto.membership_annexed_id,
+        });
+      customerMembershipAnnexeds.push(customerMembershipAnnexed);
+    }
+    return await this._customerMembershipAnnexedRepository.save(
       customerMembershipAnnexeds,
     );
   }

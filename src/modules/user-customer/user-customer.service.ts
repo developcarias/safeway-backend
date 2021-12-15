@@ -6,6 +6,7 @@ import { CustomerService } from '../customer/customer.service';
 import { Customer } from '../customer/entities/customer.entity';
 import { InvoiceService } from '../invoice/invoice.service';
 import { SurveyCustomerService } from '../survey-customer/survey-customer.service';
+import { User } from '../user/entities/user.entity';
 import { UserRepository } from '../user/user.repository';
 import { CreateUserCustomerDto } from './dto/create-user-customer.dto';
 import { UpdateUserCustomerDto } from './dto/update-user-customer.dto';
@@ -17,7 +18,7 @@ export class UserCustomerService {
   constructor(
     @InjectRepository(UserCustomerRepository)
     private readonly _userCustomerRepository: UserCustomerRepository,
-    @InjectRepository(UserCustomerRepository)
+    @InjectRepository(UserRepository)
     private readonly _userRepository: UserRepository,
     private customerService: CustomerService,
     private customerMembershipAnnexedService: CustomerMembershipAnnexedService,
@@ -30,19 +31,19 @@ export class UserCustomerService {
     const customer: Customer = await this.customerService.create(
       createUserCustomerDto.info_customer,
     );
-    this.customerMembershipAnnexedService.createWithCustomer(
+    await this.customerMembershipAnnexedService.createWithCustomer(
       createUserCustomerDto.membership_annexed,
       customer,
     );
-    this.beneficiaryService.createAllWithCustomer(
+    await this.beneficiaryService.createAllWithCustomer(
       createUserCustomerDto.beneficiaries,
       customer,
     );
-    this.surveyService.createAllWithCustomer(
+    await this.surveyService.createAllWithCustomer(
       createUserCustomerDto.survey,
       customer,
     );
-    this.invoiceService.createWithCustomer(
+    await this.invoiceService.createWithCustomer(
       createUserCustomerDto.invoice,
       customer,
     );

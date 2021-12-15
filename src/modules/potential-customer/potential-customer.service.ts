@@ -36,7 +36,7 @@ export class PotentialCustomerService {
     const portentialCustomerEntitySaved =
       await this._potentialCustomerRepository.save(portentialCustomerEntity);
 
-    this.potentialCustomerMembershipAnnexeService.createWithCustomerAndAnnexedMemberships(
+    await this.potentialCustomerMembershipAnnexeService.createWithCustomerAndAnnexedMemberships(
       portentialCustomerEntitySaved,
       createPotentialCustomerDto.membership_annexed,
     );

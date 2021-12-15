@@ -21,8 +21,8 @@ export class CustomerService {
       await this._planMembershipRepository.findOne({
         id: createCustomerDto.plan_membership_id,
       });
-    customerEntity.typeIdentify = createCustomerDto.idetificaction_type;
-    (customerEntity.identify = createCustomerDto.idetification),
+    customerEntity.typeIdentify = createCustomerDto.identification_type;
+    (customerEntity.identify = createCustomerDto.identification),
       (customerEntity.firstName = createCustomerDto.first_name),
       (customerEntity.lastName = createCustomerDto.last_name),
       (customerEntity.email = createCustomerDto.email),

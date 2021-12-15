@@ -23,30 +23,27 @@ export class PotentialCustomerMembershipAnnexedService {
     return 'This action adds a new potentialCustomerMembershipAnnexed';
   }
 
-  createWithCustomerAndAnnexedMemberships(
+  async createWithCustomerAndAnnexedMemberships(
     potentialCustomer: PotentialCustomer,
     membershipAnnexes: CreateMembershipAnnexedDto[],
   ) {
-    let potentialCustomerMembershipAnnexeds: PotentialCustomerMembershipAnnexed[];
-    membershipAnnexes.forEach(
-      async (membershipAnnexed: CreateMembershipAnnexedDto) => {
-        const potentialCustomerMembershipAnnexed: PotentialCustomerMembershipAnnexed =
-          new PotentialCustomerMembershipAnnexed();
-        potentialCustomerMembershipAnnexed.potenntialCustomer =
-          potentialCustomer;
-        potentialCustomerMembershipAnnexed.membershipAnnexed =
-          await this._membershipAnnexedRepository.findOne({
-            id: membershipAnnexed.membership_annexed_id,
-          });
-        potentialCustomerMembershipAnnexeds.push(
-          potentialCustomerMembershipAnnexed,
-        );
-      },
-    );
-    this._potentialCustomerMembershipAnnexedRepository.save(
+    const potentialCustomerMembershipAnnexeds: PotentialCustomerMembershipAnnexed[] =
+      [];
+    for (const membershipAnnexed of membershipAnnexes) {
+      const potentialCustomerMembershipAnnexed: PotentialCustomerMembershipAnnexed =
+        new PotentialCustomerMembershipAnnexed();
+      potentialCustomerMembershipAnnexed.potenntialCustomer = potentialCustomer;
+      potentialCustomerMembershipAnnexed.membershipAnnexed =
+        await this._membershipAnnexedRepository.findOne({
+          id: membershipAnnexed.membership_annexed_id,
+        });
+      potentialCustomerMembershipAnnexeds.push(
+        potentialCustomerMembershipAnnexed,
+      );
+    }
+    return await this._potentialCustomerMembershipAnnexedRepository.save(
       potentialCustomerMembershipAnnexeds,
     );
-    return 'This action adds a new potentialCustomerMembershipAnnexed';
   }
 
   findAll() {

@@ -1,8 +1,8 @@
 export class CreateBeneficiaryDto {
   first_name: string;
   last_name: string;
-  indentification: string;
-  idetificaction_type: string;
+  identification: string;
+  identification_type: string;
   birth_date: string;
   age: number;
   gender: string;

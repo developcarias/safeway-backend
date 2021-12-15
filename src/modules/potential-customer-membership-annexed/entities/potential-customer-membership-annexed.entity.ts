@@ -2,7 +2,7 @@ import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { PotentialCustomer } from 'src/modules/potential-customer/entities/potential-customer.entity';
 import { MembershipAnnexed } from 'src/modules/membership-annexed/entities/membership-annexed.entity';
 
-@Entity('customer_membership_annexed', { schema: 'safeway_schema' })
+@Entity('potential_customer_membership_annexed', { schema: 'safeway_schema' })
 export class PotentialCustomerMembershipAnnexed {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;

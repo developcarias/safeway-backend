@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Customer } from '../customer/entities/customer.entity';
+import { Survey } from '../survey/entities/survey.entity';
 import { SurveyRepository } from '../survey/survey.repository';
 import { CreateSurveyCustomerDto } from './dto/create-survey-customer.dto';
 import { UpdateSurveyCustomerDto } from './dto/update-survey-customer.dto';
@@ -20,24 +21,23 @@ export class SurveyCustomerService {
     return 'This action adds a new surveyCustomer';
   }
 
-  createAllWithCustomer(
+  async createAllWithCustomer(
     createSurveyCustomerDtos: CreateSurveyCustomerDto[],
     customer: Customer,
   ) {
-    let surveCurstomers: SurveyCustomer[];
-    createSurveyCustomerDtos.forEach(
-      async (surveyCustomerDto: CreateSurveyCustomerDto) => {
-        const surveyCusomer: SurveyCustomer = new SurveyCustomer();
-        surveyCusomer.customer = customer;
-        surveyCusomer.survey = await this._surveyRepository.findOne({
-          id: surveyCustomerDto.survey_id,
-        });
-        surveyCusomer.valueText = surveyCustomerDto.answer_text;
-        surveyCusomer.valueBoolean = surveyCusomer.valueBoolean;
-        surveCurstomers.push(surveyCusomer);
-      },
-    );
-    return this._surveyCustomerRepository.save(surveCurstomers);
+    const surveCurstomers: SurveyCustomer[] = [];
+    for (const surveyCustomerDto of createSurveyCustomerDtos) {
+      const surveyCusomer: SurveyCustomer = new SurveyCustomer();
+      surveyCusomer.customer = customer;
+      const survey: Survey = await this._surveyRepository.findOne({
+        id: surveyCustomerDto.survey_id,
+      });
+      surveyCusomer.survey = survey;
+      surveyCusomer.valueText = surveyCustomerDto.answer_text;
+      surveyCusomer.valueBoolean = surveyCusomer.valueBoolean;
+      surveCurstomers.push(surveyCusomer);
+    }
+    return await this._surveyCustomerRepository.save(surveCurstomers);
   }
 
   findAll() {

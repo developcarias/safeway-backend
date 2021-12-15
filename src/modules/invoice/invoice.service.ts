@@ -17,7 +17,10 @@ export class InvoiceService {
     return 'This action adds a new invoice';
   }
 
-  createWithCustomer(createInvoiceDto: CreateInvoiceDto, customer: Customer) {
+  async createWithCustomer(
+    createInvoiceDto: CreateInvoiceDto,
+    customer: Customer,
+  ) {
     const invoice: Invoice = new Invoice();
     invoice.customer = customer;
     invoice.isCustomer = createInvoiceDto.is_customer;
@@ -26,7 +29,7 @@ export class InvoiceService {
     invoice.email = createInvoiceDto.email;
     invoice.phone = createInvoiceDto.phone;
     invoice.address = createInvoiceDto.address;
-    return this._invoiceRepository.save(invoice);
+    return await this._invoiceRepository.save(invoice);
   }
 
   findAll() {

@@ -1,10 +1,15 @@
 import { Customer } from 'src/modules/customer/entities/customer.entity';
-import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Index('invoice_pk', ['id'], { unique: true })
 @Entity('invoice', { schema: 'safeway_schema' })
 export class Invoice {
-  @Column('bigint', { primary: true, name: 'id' })
+  @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: string;
 
   @Column('integer', { name: 'is_customer' })

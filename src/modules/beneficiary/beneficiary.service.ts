@@ -12,38 +12,33 @@ export class BeneficiaryService {
   constructor(
     @InjectRepository(BeneficiaryRepository)
     private readonly _beneficiaryRepository: BeneficiaryRepository,
-    @InjectRepository(CustomerRepository)
-    private readonly _customerRepository: CustomerRepository,
   ) {}
 
   create(createBeneficiaryDto: CreateBeneficiaryDto) {
     return 'This action adds a new beneficiary';
   }
 
-  createAllWithCustomer(
+  async createAllWithCustomer(
     createBeneficiaryDtos: CreateBeneficiaryDto[],
     customer: Customer,
   ) {
-    let beneficiariesEntity: Beneficiary[];
-    createBeneficiaryDtos.forEach(
-      (createBeneficiaryDto: CreateBeneficiaryDto) => {
-        const beneficiaryEntity = new Beneficiary();
-        beneficiaryEntity.customer = customer;
-        beneficiaryEntity.identify = createBeneficiaryDto.indentification;
-        beneficiaryEntity.typeIdentify =
-          createBeneficiaryDto.idetificaction_type;
-        beneficiaryEntity.typeIdentify = createBeneficiaryDto.first_name;
-        beneficiaryEntity.lastName = createBeneficiaryDto.last_name;
-        beneficiaryEntity.birthDate = createBeneficiaryDto.birth_date;
-        beneficiaryEntity.age = createBeneficiaryDto.age;
-        beneficiaryEntity.gender = createBeneficiaryDto.gender;
-        beneficiaryEntity.placeOfBirth = createBeneficiaryDto.place_of_bith;
-        beneficiaryEntity.height = createBeneficiaryDto.height;
-        beneficiaryEntity.weight = createBeneficiaryDto.weight;
-        beneficiariesEntity.push(beneficiaryEntity);
-      },
-    );
-    return this._beneficiaryRepository.save(beneficiariesEntity);
+    const beneficiariesEntity: Beneficiary[] = [];
+    for (const createBeneficiaryDto of createBeneficiaryDtos) {
+      const beneficiaryEntity = new Beneficiary();
+      beneficiaryEntity.customer = customer;
+      beneficiaryEntity.identify = createBeneficiaryDto.identification;
+      beneficiaryEntity.typeIdentify = createBeneficiaryDto.identification_type;
+      beneficiaryEntity.firstName = createBeneficiaryDto.first_name;
+      beneficiaryEntity.lastName = createBeneficiaryDto.last_name;
+      beneficiaryEntity.birthDate = createBeneficiaryDto.birth_date;
+      beneficiaryEntity.age = createBeneficiaryDto.age;
+      beneficiaryEntity.gender = createBeneficiaryDto.gender;
+      beneficiaryEntity.placeOfBirth = createBeneficiaryDto.place_of_bith;
+      beneficiaryEntity.height = createBeneficiaryDto.height;
+      beneficiaryEntity.weight = createBeneficiaryDto.weight;
+      beneficiariesEntity.push(beneficiaryEntity);
+    }
+    return await this._beneficiaryRepository.save(beneficiariesEntity);
   }
 
   findAll() {
