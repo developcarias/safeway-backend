@@ -33,7 +33,7 @@ export class BeneficiaryService {
       beneficiaryEntity.birthDate = createBeneficiaryDto.birth_date;
       beneficiaryEntity.age = createBeneficiaryDto.age;
       beneficiaryEntity.gender = createBeneficiaryDto.gender;
-      beneficiaryEntity.placeOfBirth = createBeneficiaryDto.place_of_bith;
+      beneficiaryEntity.placeOfBirth = createBeneficiaryDto.place_of_birth;
       beneficiaryEntity.height = createBeneficiaryDto.height;
       beneficiaryEntity.weight = createBeneficiaryDto.weight;
       beneficiariesEntity.push(beneficiaryEntity);

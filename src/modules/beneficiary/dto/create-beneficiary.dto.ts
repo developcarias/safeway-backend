@@ -6,7 +6,7 @@ export class CreateBeneficiaryDto {
   birth_date: string;
   age: number;
   gender: string;
-  place_of_bith: string;
+  place_of_birth: string;
   height: number;
   weight: number;
 }
